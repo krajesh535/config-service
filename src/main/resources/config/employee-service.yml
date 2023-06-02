@@ -1,0 +1,40 @@
+server:
+  port: 8092
+  servlet:
+    context-path: /
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: gateway, refresh, loggers, info, health
+  endpoint:
+    loggers:
+      enabled: true
+    gateway:
+      enabled: true # default value
+
+openapi:
+  service:
+    title: employee-service doc #title that you will want to display in the swagger ui
+    version: 1.0.0
+    url: http://localhost:8090 #api gateway url
+
+springdoc:
+  api-docs:
+    path: /employees/v3/api-docs
+  swagger-ui:
+    path: /employees/swagger-ui.html
+    defaultModelsExpandDepth: -1
+
+logging:
+  pattern:
+    level: "%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]"
+
+
+message: "FADASDS EMploee"
