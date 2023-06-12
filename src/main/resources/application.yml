@@ -1,9 +1,21 @@
 spring:
   application:
     name: config-server
-  profiles:
-    active: native
-
+#  profiles:
+#    active: native
+  cloud:
+    config:
+      server:
+        git:
+          search-paths: '{application}'
+          uri: @project.basedir@/../cloud-config-props
+          basedir: cloud-config-props
+#          uri: file://<homepath>/Java/spring-boot/microservices/spring-cloud-microservices/cloud-config-props
+          default-label: main
+          clone-on-start: true
+      bus:
+        id: ${spring.application.name}:${spring.profiles.active}:${random.uuid}
+        enabled: true
 server:
   port: 8088
 
@@ -12,3 +24,11 @@ management:
     web:
       exposure:
         include: "*"   #gateway, refresh, loggers, info, health
+  security:
+    enabled: false
+
+#logging:
+#  level:
+#    ROOT: INFO
+##    org.springframework.cloud.config: DEBUG
+#    org.springframework.cloud: DEBUG
