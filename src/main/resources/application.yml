@@ -8,7 +8,8 @@ spring:
       server:
         git:
           search-paths: '{application}'
-          uri: @project.basedir@/../cloud-config-props
+          uri: https://github.com/krajesh535/cloud-config-props.git
+#          uri: @project.basedir@/../cloud-config-props
           basedir: cloud-config-props
 #          uri: file://<homepath>/Java/spring-boot/microservices/spring-cloud-microservices/cloud-config-props
           default-label: main
